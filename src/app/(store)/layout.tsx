@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Link href="/">
               <Image src={marvelLogo} alt="Marvel's logo" width={100} height={40} />
             </Link>
-            <nav className="flex items-center gap-6 font-bold">
+            <nav className="flex items-center gap-6 font-semibold">
               <Link href="/">Home</Link>
               <Link href="/characters">Characters</Link>
               <Link href="/faq">FAQ</Link>
