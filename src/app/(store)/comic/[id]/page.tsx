@@ -1,41 +1,7 @@
-import ComicCard from "@/components/comicCard";
 import { getComic } from "@/services/marvelApi";
 import { Comic } from "@/types/comic";
 import Image from "next/image";
 import Link from "next/link";
-
-type Time = {
-  datetime: string;
-  day_of_week: number;
-  day_of_year: number;
-  timezone: string;
-  week_number: number;
-};
-
-type User = {
-  login: string;
-  id: number;
-  avatar_url: string;
-  html_url: string;
-  bio: string;
-};
-
-async function getTime(): Promise<Time> {
-  const res = await fetch("http://worldtimeapi.org/api/timezone/America/Chicago", {
-    next: {
-      // incremental static regeneration - revalidate every 5 seconds
-      revalidate: 5,
-    },
-  });
-  return res.json();
-}
-async function getData(username: string): Promise<User> {
-  const res = await fetch(`https://api.github.com/users/${username}`, {
-    // fetch new data on every request, if removed, we get the default static data fetch
-    cache: "no-store",
-  });
-  return res.json();
-}
 
 export async function generateMetadata({ params }: { params: { id: number } }) {
   const comic: Comic = await getComic(params.id);
@@ -68,9 +34,7 @@ export default async function ComicDetailsPage({ params }: { params: { id: numbe
           </p>
         ) : null}
         <h1 className="text-xl font-semibold">{comic.title}</h1>
-
         <hr className="border w-full my-6" />
-
         <p className="text-gray-700 text-base">{comic.description}</p>
 
         {comic.oldPrice !== comic.price && (

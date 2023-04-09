@@ -1,6 +1,11 @@
 import FaqItem from "@/components/FaqItem";
 import { faqsData } from "@/data/faqsData";
 
+export const metadata = {
+  title: "FAQ | Marvel API",
+  description: "Frequently Asked Questions about the comics store",
+};
+
 export default function FaqPage() {
   return (
     <div className="max-w-screen-xl mx-auto px-5 bg-white min-h-sceen">
