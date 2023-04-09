@@ -16,3 +16,8 @@ export default async function Home() {
     </div>
   );
 }
+
+export async function generateStaticParams() {
+  let comics: Comics = await getComics(300, 12);
+  return comics.data.results.map((comic) => ({ id: comic.id }));
+}

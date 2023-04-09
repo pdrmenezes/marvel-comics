@@ -68,8 +68,8 @@ export default async function ComicDetailsPage({ params }: { params: { id: numbe
         </p>
         <div className="text-gray-900 font-bold text-xl mb-2">{comic.title}</div>
         <p className="text-gray-700 text-base">{comic.description}</p>
-        {comic.oldPrice !== comic.price && <p className="line-through text-gray-500">${comic.oldPrice}</p>}
-        <p>${comic.price}</p>
+        {comic.oldPrice !== comic.price && <p className="line-through text-gray-500">${comic.oldPrice}.00</p>}
+        <p>${comic.price}.00</p>
         <Link href={`/checkout/${params.id}`}>
           <button
             className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 hover:bg-red-700 hover:text-white disabled:bg-zinc-300 disabled:hover:text-gray-700"
@@ -94,36 +94,4 @@ export default async function ComicDetailsPage({ params }: { params: { id: numbe
       </div>
     </div>
   );
-}
-
-{
-  /* <div className="flex gap-2">
-        <div className="w-80">
-          <Image src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`} alt={`${comic.title}'s thumbnail`} width={200} height={500} />
-        </div>
-        <div className="flex-1">
-          <h1>{comic.title}</h1>
-          {comic.oldPrice !== comic.price && <p style={{ textDecoration: "line-through" }}>${comic.oldPrice}</p>}
-          <p>${comic.price}</p>
-          <Link href={`/checkout/${params.id}`}>
-            <button
-              className="px-2 bg-emerald-500 rounded font-semibold text-white h-10 hover:bg-emerald-600 disabled:bg-zinc-300"
-              disabled={outOfStock}
-            >
-              {outOfStock ? "Sem estoque" : "Comprar"}
-            </button>
-          </Link>
-          {comic.characters.available === 0 && <div>No characters listed on this comic</div>}
-          <div className="flex gap-2 mt-2">
-            {comic.characters.available > 0
-              ? comic.characters.items.map((char) => (
-                  <p key={char.resourceURI} className="border border-1 rounded-full px-4 py-2">
-                    {char.name}
-                  </p>
-                ))
-              : null}
-          </div>
-        </div>
-      </div>
-    </div> */
 }
