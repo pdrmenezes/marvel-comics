@@ -21,7 +21,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/">Home</Link>
               <Link href="/characters">Characters</Link>
               <Link href="/faq">FAQ</Link>
-              <Link href="/checkout/123">Checkout Test</Link>
             </nav>
           </header>
           <main className="flex-1 overflow-y-auto p-5">{children}</main>
